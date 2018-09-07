@@ -1,0 +1,22 @@
+{
+  "name": "hapiserver",
+  "version": "1.0.0",
+  "description": "basic hapi.js server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarrodyellets/hapiServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jarrodyellets/hapiServer/issues"
+  },
+  "homepage": "https://github.com/jarrodyellets/hapiServer#readme",
+  "dependencies": {
+    "hapi": "^17.5.4"
+  }
+}
