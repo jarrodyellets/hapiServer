@@ -11,6 +11,14 @@ server.route({
   handler: (request, h) => {
     return '<h1>Hello</h1>';
   }
+});
+
+server.route({
+  method: 'GET',
+  path: '/user/{name}',
+  handler: (request, h) => {
+    return 'Hello ' + request.params.name;
+  }
 })
 
 server.start((err) => {
