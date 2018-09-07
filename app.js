@@ -5,6 +5,14 @@ const server = new Hapi.Server({
   host: 'localhost'
 });
 
+server.route({
+  method: 'GET',
+  path: '/',
+  handler: (request, h) => {
+    return '<h1>Hello</h1>';
+  }
+})
+
 server.start((err) => {
   if(err){
     throw err;
