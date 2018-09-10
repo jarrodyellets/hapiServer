@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jarrodyellets/hapiServer#readme",
   "dependencies": {
-    "hapi": "^17.5.4"
+    "hapi": "^17.5.4",
+    "inert": "^5.1.0",
+    "path": "^0.12.7"
   }
 }
