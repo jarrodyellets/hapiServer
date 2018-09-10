@@ -18,16 +18,16 @@ const start = async () => {
   server.route({
     method: 'GET',
     path: '/',
-    handler: (request, h) => {
-      return h.file('index.html');
+    handler: {
+      file: 'index.html'
     }
   })
 
   server.route({
     method: 'GET',
     path: '/about',
-    handler: (request, h) => {
-      return h.file('about.html');
+    handler: {
+      file: 'about.html'
     }
   })
 
