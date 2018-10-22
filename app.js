@@ -2,7 +2,6 @@
 
 const Hapi = require('hapi');
 const Path = require('path');
-const Inert = require('inert');
 
 const server = new Hapi.Server({
   port: 8000,
@@ -13,38 +12,34 @@ const server = new Hapi.Server({
   }
 });
 
-const start = async () => {
+const init = async () => {
 
-  await server.register(Inert);
+  await server.register(require('inert'));
 
   server.route({
     method: 'GET',
     path: '/',
-    handler: async (request, h) => {
-      console.log(request.server.app.cache);
+    handler: (request, h) => {
+      return h.file('index.html');
     }
   })
 
   server.route({
     method: 'GET',
     path: '/about',
-    handler: {
-      file: 'about.html'
+    handler: (request, h) => {
+      return h.file('about.html');
     }
   })
 
-  async function start() {
-
-    try {
-      await server.start();
-    }
-    catch (err) {
-      console.log(err);
-      process.exit(1);
-    }
+  try {
+    await server.start()
+    console.log('Server started listening on %s', server.info.uri);
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
   }
 
-  console.log('Server started listening on %s', server.info.uri);
 }
 
-start();
+init();
