@@ -26,6 +26,14 @@ const init = async () => {
 
   server.route({
     method: 'GET',
+    path: '/{name}',
+    handler: (request, h) => {
+      return 'Hello, ' + encodeURIComponent(request.params.name) + '!';
+    }
+  })
+
+  server.route({
+    method: 'GET',
     path: '/about',
     handler: (request, h) => {
       return h.file('about.html');
