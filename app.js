@@ -2,6 +2,7 @@
 
 const Hapi = require('hapi');
 const Path = require('path');
+const Joi = require('joi');
 
 const server = new Hapi.Server({
   port: 8000,
@@ -29,6 +30,13 @@ const init = async () => {
     path: '/{name}',
     handler: (request, h) => {
       return 'Hello, ' + encodeURIComponent(request.params.name) + '!';
+    },
+    options: {
+      validate: {
+        params: {
+          name: Joi.string().min(3).max(10)
+        }
+      }
     }
   })
 
