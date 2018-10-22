@@ -1,3 +1,5 @@
+'use strict';
+
 const Hapi = require('hapi');
 const Path = require('path');
 const Inert = require('inert');
@@ -18,8 +20,8 @@ const start = async () => {
   server.route({
     method: 'GET',
     path: '/',
-    handler: {
-      file: 'index.html'
+    handler: async (request, h) => {
+      console.log(request.server.app.cache);
     }
   })
 
@@ -31,7 +33,16 @@ const start = async () => {
     }
   })
 
-  await server.start();
+  async function start() {
+
+    try {
+      await server.start();
+    }
+    catch (err) {
+      console.log(err);
+      process.exit(1);
+    }
+  }
 
   console.log('Server started listening on %s', server.info.uri);
 }
