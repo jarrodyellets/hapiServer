@@ -15,7 +15,16 @@ const server = new Hapi.Server({
 
 const init = async () => {
 
-  await server.register(require('inert'));
+  await server.register([{
+    plugin: require('inert')
+  },
+  {
+    plugin: require('hapi-pino'),
+    options: {
+      prettyPrint: true,
+      logEvents: ['response', 'onPostStart']
+    }
+  }]);
 
   server.route({
     method: 'GET',
